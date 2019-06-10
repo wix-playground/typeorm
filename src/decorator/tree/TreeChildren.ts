@@ -1,4 +1,6 @@
-import {getMetadataArgsStorage, RelationOptions} from "../../";
+import {getMetadataArgsStorage} from "../../metadata-args/MetadataArgsStorage";
+import {RelationOptions} from "../exports";
+
 import {RelationMetadataArgs} from "../../metadata-args/RelationMetadataArgs";
 
 /**
@@ -13,7 +15,7 @@ export function TreeChildren(options?: { cascade?: boolean|("insert"|"update"|"r
         const reflectedType = Reflect && (Reflect as any).getMetadata ? Reflect.getMetadata("design:type", object, propertyName) : undefined;
         const isLazy = (reflectedType && typeof reflectedType.name === "string" && reflectedType.name.toLowerCase() === "promise") || false;
 
-        // add one-to-many relation for this 
+        // add one-to-many relation for this
         getMetadataArgsStorage().relations.push({
             isTreeChildren: true,
             target: object.constructor,

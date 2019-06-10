@@ -1,4 +1,6 @@
-import {ColumnOptions, ColumnType, getMetadataArgsStorage} from "../../";
+import {getMetadataArgsStorage} from "../../metadata-args/MetadataArgsStorage";
+import {ColumnOptions} from "../exports";
+import {ColumnType} from "../../driver/types/ColumnTypes";
 import {ColumnTypeUndefinedError} from "../../error/ColumnTypeUndefinedError";
 import {PrimaryColumnCannotBeNullableError} from "../../error/PrimaryColumnCannotBeNullableError";
 import {ColumnMetadataArgs} from "../../metadata-args/ColumnMetadataArgs";

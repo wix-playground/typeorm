@@ -1,6 +1,7 @@
-import {getMetadataArgsStorage, JoinTableOptions} from "../../";
 import {JoinTableMetadataArgs} from "../../metadata-args/JoinTableMetadataArgs";
 import {JoinTableMultipleColumnsOptions} from "../options/JoinTableMultipleColumnsOptions";
+import { JoinTableOptions } from "../exports";
+import { getMetadataArgsStorage } from "../../metadata-args/MetadataArgsStorage";
 
 /**
  * JoinTable decorator is used in many-to-many relationship to specify owner side of relationship.

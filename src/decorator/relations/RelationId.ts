@@ -1,5 +1,6 @@
-import {getMetadataArgsStorage, SelectQueryBuilder} from "../../";
 import {RelationIdMetadataArgs} from "../../metadata-args/RelationIdMetadataArgs";
+import { getMetadataArgsStorage } from "../../metadata-args/MetadataArgsStorage";
+import { SelectQueryBuilder } from "../../query-builder/SelectQueryBuilder";
 
 /**
  * Special decorator used to extract relation id into separate entity property.

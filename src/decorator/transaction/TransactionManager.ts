@@ -1,4 +1,4 @@
-import {getMetadataArgsStorage} from "../../";
+import {getMetadataArgsStorage} from "../../metadata-args/MetadataArgsStorage";
 import {TransactionEntityMetadataArgs} from "../../metadata-args/TransactionEntityMetadataArgs";
 
 /**

@@ -1,5 +1,6 @@
-import {ColumnOptions, getMetadataArgsStorage} from "../../";
 import {InheritanceMetadataArgs} from "../../metadata-args/InheritanceMetadataArgs";
+import { ColumnOptions } from "../exports";
+import { getMetadataArgsStorage } from "../../metadata-args/MetadataArgsStorage";
 
 /**
  * Sets for entity to use table inheritance pattern.

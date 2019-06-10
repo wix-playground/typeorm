@@ -1,5 +1,7 @@
-import {getMetadataArgsStorage, ObjectType, RelationOptions} from "../../";
 import {RelationMetadataArgs} from "../../metadata-args/RelationMetadataArgs";
+import { RelationOptions } from "../exports";
+import { ObjectType } from "../../common/ObjectType";
+import { getMetadataArgsStorage } from "../../metadata-args/MetadataArgsStorage";
 
 /**
  * Many-to-one relation allows to create type of relation when Entity1 can have single instance of Entity2, but

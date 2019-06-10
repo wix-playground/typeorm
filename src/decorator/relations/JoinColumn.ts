@@ -1,5 +1,6 @@
-import {getMetadataArgsStorage, JoinColumnOptions} from "../../";
 import {JoinColumnMetadataArgs} from "../../metadata-args/JoinColumnMetadataArgs";
+import { JoinColumnOptions } from "../exports";
+import { getMetadataArgsStorage } from "../../metadata-args/MetadataArgsStorage";
 
 /**
  * JoinColumn decorator used on one-to-one relations to specify owner side of relationship.

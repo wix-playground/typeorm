@@ -1,5 +1,6 @@
-import {EntityOptions, getMetadataArgsStorage} from "../../";
+import { getMetadataArgsStorage } from "../../metadata-args/MetadataArgsStorage";
 import {TableMetadataArgs} from "../../metadata-args/TableMetadataArgs";
+import { EntityOptions } from "../exports";
 
 /**
  * This decorator is used to mark classes that will be an entity (table or document depend on database type).

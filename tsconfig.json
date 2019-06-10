@@ -22,8 +22,10 @@
     },
     "exclude": [
         "tmp",
+        "test",
         "temp",
         "build",
+        "sample",
         "node_modules"
     ]
 }

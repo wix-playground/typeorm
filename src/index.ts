@@ -28,7 +28,6 @@ export * from "./common/ObjectType";
 export * from "./common/ObjectLiteral";
 export * from "./common/DeepPartial";
 export * from "./error/QueryFailedError";
-
 export * from "./find-options/operator/Any";
 export * from "./find-options/operator/Between";
 export * from "./find-options/operator/Equal";

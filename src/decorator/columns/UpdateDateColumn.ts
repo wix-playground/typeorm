@@ -1,4 +1,5 @@
-import {ColumnOptions, getMetadataArgsStorage} from "../../";
+import {getMetadataArgsStorage} from "../../metadata-args/MetadataArgsStorage";
+import {ColumnOptions} from "../exports";
 import {ColumnMetadataArgs} from "../../metadata-args/ColumnMetadataArgs";
 
 /**

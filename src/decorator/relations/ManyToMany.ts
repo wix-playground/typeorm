@@ -1,4 +1,6 @@
-import {getMetadataArgsStorage, ObjectType, RelationOptions} from "../../";
+import { RelationOptions } from "../exports";
+import { ObjectType } from "../../common/ObjectType";
+import { getMetadataArgsStorage } from "../../metadata-args/MetadataArgsStorage";
 import {RelationMetadataArgs} from "../../metadata-args/RelationMetadataArgs";
 
 /**
@@ -6,7 +8,7 @@ import {RelationMetadataArgs} from "../../metadata-args/RelationMetadataArgs";
  * multiple instances of Entity1. To achieve it, this type of relation creates a junction table, where it storage
  * entity1 and entity2 ids. This is owner side of the relationship.
  */
-export function ManyToMany<T>(typeFunctionOrTarget: string|((type?: any) => ObjectType<T>), 
+export function ManyToMany<T>(typeFunctionOrTarget: string|((type?: any) => ObjectType<T>),
                               options?: RelationOptions): Function;
 
 /**

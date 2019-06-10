@@ -1,4 +1,4 @@
-import {getMetadataArgsStorage} from "../../";
+import { getMetadataArgsStorage } from "../../metadata-args/MetadataArgsStorage";
 import {EventListenerTypes} from "../../metadata/types/EventListenerTypes";
 import {EntityListenerMetadataArgs} from "../../metadata-args/EntityListenerMetadataArgs";
 
