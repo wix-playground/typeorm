@@ -14,7 +14,7 @@ import {ReturningStatementNotSupportedError} from "../error/ReturningStatementNo
 import {SqljsDriver} from "../driver/sqljs/SqljsDriver";
 import {MysqlDriver} from "../driver/mysql/MysqlDriver";
 import {BroadcasterResult} from "../subscriber/BroadcasterResult";
-import {EntitySchema} from "../index";
+import {EntitySchema} from "../entity-schema/EntitySchema";
 
 /**
  * Allows to build complex sql queries in a fashion way and execute those queries.

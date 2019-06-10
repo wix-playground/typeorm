@@ -1,4 +1,4 @@
-import {CockroachDriver} from "../driver/cockroachdb/CockroachDriver";
+import {PostgresDriver} from "../driver/postgres/PostgresDriver";
 import {PostgresConnectionOptions} from "../driver/postgres/PostgresConnectionOptions";
 import {SqlServerConnectionOptions} from "../driver/sqlserver/SqlServerConnectionOptions";
 import {Table} from "./table/Table";
@@ -14,9 +14,7 @@ import {SchemaBuilder} from "./SchemaBuilder";
 import {SqlInMemory} from "../driver/SqlInMemory";
 import {TableUtils} from "./util/TableUtils";
 import {TableColumnOptions} from "./options/TableColumnOptions";
-import {PostgresDriver} from "../driver/postgres/PostgresDriver";
 import {SqlServerDriver} from "../driver/sqlserver/SqlServerDriver";
-import {MysqlDriver} from "../driver/mysql/MysqlDriver";
 import {TableUnique} from "./table/TableUnique";
 import {TableCheck} from "./table/TableCheck";
 import {TableExclusion} from "./table/TableExclusion";
@@ -65,7 +63,7 @@ export class RdbmsSchemaBuilder implements SchemaBuilder {
         this.queryRunner = this.connection.createQueryRunner("master");
         // CockroachDB implements asynchronous schema sync operations which can not been executed in transaction.
         // E.g. if you try to DROP column and ADD it again in the same transaction, crdb throws error.
-        if (!(this.connection.driver instanceof CockroachDriver))
+        if (!(this.connection.driver.constructor.name ===  "CockroachDriver"))
             await this.queryRunner.startTransaction();
         try {
             const tablePaths = this.entityToSyncMetadatas.map(metadata => metadata.tablePath);
@@ -81,13 +79,13 @@ export class RdbmsSchemaBuilder implements SchemaBuilder {
             if (this.connection.queryResultCache)
                 await this.connection.queryResultCache.synchronize(this.queryRunner);
 
-            if (!(this.connection.driver instanceof CockroachDriver))
+            if (!(this.connection.driver.constructor.name === "CockroachDriver"))
                 await this.queryRunner.commitTransaction();
 
         } catch (error) {
 
             try { // we throw original error even if rollback thrown an error
-                if (!(this.connection.driver instanceof CockroachDriver))
+                if (!(this.connection.driver.constructor.name === "CockroachDriver"))
                     await this.queryRunner.rollbackTransaction();
             } catch (rollbackError) { }
             throw error;
@@ -292,7 +290,7 @@ export class RdbmsSchemaBuilder implements SchemaBuilder {
 
     protected async dropOldChecks(): Promise<void> {
         // Mysql does not support check constraints
-        if (this.connection.driver instanceof MysqlDriver)
+        if (this.connection.driver.constructor.name === "MysqlDriver")
             return;
 
         await PromiseUtils.runInSequence(this.entityToSyncMetadatas, async metadata => {
@@ -518,7 +516,7 @@ export class RdbmsSchemaBuilder implements SchemaBuilder {
 
             // drop all composite uniques related to this column
             // Mysql does not support unique constraints.
-            if (!(this.connection.driver instanceof MysqlDriver)) {
+            if (!(this.connection.driver.constructor.name === "MysqlDriver")) {
                 await PromiseUtils.runInSequence(changedColumns, changedColumn => this.dropColumnCompositeUniques(metadata.tablePath, changedColumn.databaseName));
             }
 
@@ -565,7 +563,7 @@ export class RdbmsSchemaBuilder implements SchemaBuilder {
 
     protected async createNewChecks(): Promise<void> {
         // Mysql does not support check constraints
-        if (this.connection.driver instanceof MysqlDriver)
+        if (this.connection.driver.constructor.name === "MysqlDriver")
             return;
 
         await PromiseUtils.runInSequence(this.entityToSyncMetadatas, async metadata => {
@@ -611,7 +609,7 @@ export class RdbmsSchemaBuilder implements SchemaBuilder {
      */
     protected async createNewExclusions(): Promise<void> {
         // Only PostgreSQL supports exclusion constraints
-        if (!(this.connection.driver instanceof PostgresDriver))
+        if (!(this.connection.driver.constructor.name === "PostgresDriver"))
             return;
 
         await PromiseUtils.runInSequence(this.entityToSyncMetadatas, async metadata => {
