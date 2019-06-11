@@ -1,5 +1,6 @@
 import {getFromContainer} from "../container";
-import { ConnectionManager, Connection } from "..";
+import {Connection} from "./Connection";
+import {ConnectionManager} from "./ConnectionManager";
 
 export function getConnection(connectionName: string = "default"): Connection {
     return getConnectionManager().get(connectionName);
