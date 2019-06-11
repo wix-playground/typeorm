@@ -330,7 +330,7 @@ export class RdbmsSchemaBuilder implements SchemaBuilder {
 
     protected async dropOldExclusions(): Promise<void> {
         // Only PostgreSQL supports exclusion constraints
-        if (!(this.connection.driver instanceof PostgresDriver))
+        if (!(this.connection.driver.constructor.name === "PostgresDriver"))
             return;
 
         await PromiseUtils.runInSequence(this.entityToSyncMetadatas, async metadata => {
